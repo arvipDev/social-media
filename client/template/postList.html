@@ -1,0 +1,15 @@
+<template name='postList'>
+  <ul id="submit_list" class="right_list_submit">
+    {{#each posts}}
+    <li class="right_item_submit">
+      <div class="right_content_submit">
+        {{content}}
+      </div>
+      <div class="right_name_submit">
+        author: {{username}}
+        <a>Follow</a>
+      </div>
+    </li>
+    {{/each}}
+  </ul>
+</template>

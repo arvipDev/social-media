@@ -1,0 +1,73 @@
+<head>
+  <meta charset="utf-8">
+  <title>Social Website</title>
+</head>
+
+<body id="body" class="full_body">
+  <div id="main-div" class="div_main">
+      <div id="left-div" class="left_div">
+        <div class="div_login">
+          {{> loginButtons}}
+        </div>
+        {{> profileArea}}
+      </div>
+        <div id="right-div" class="right_div">
+          {{#if currentUser}}
+          {{> postForm}}
+          {{/if}}
+          {{> postList}}
+        </div>
+    </div>
+</body>
+
+<template name="postForm">
+  <form id="submit_form" class="right_form_submit">
+    <textarea id="submit-text"></textarea>
+    <button id="submit_button" class="right_button_submit" type="submit">Say</button>
+  </form>
+</template>
+
+<template name='postList'>
+  <ul id="submit_list" class="right_list_submit">
+    {{#each posts}}
+    <li class="right_item_submit">
+      <div class="right_content_submit">
+        {{content}}
+      </div>
+      <div class="right_name_submit">
+        author: {{username}}
+        <a class='follow-link'>Follow</a>
+      </div>
+    </li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name='profileArea'>
+  {{#if currentUser}}
+  <div id="username" class="username_div">
+    <a class="filter-user">{{currentUser.username}}</a>
+  </div>
+  {{/if}}
+  <div id="community" class="community_div">
+    <a class="community">Global</a>
+  </div>
+  {{#if currentUser}}
+  <div id="following" class="following_div">
+    <h3>Following</h3>
+    {{#each username in following}}
+    <div class="following_name">
+      <a class="filter-user">{{username}}</a>
+    </div>
+    {{/each}}
+  </div>
+  <div id="followers" class="followers_div">
+    <h3>Followers</h3>
+    {{#each followers }}
+    <div class="followers_name">
+      <a class="filter-user">{{username}}</a>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</template>
